@@ -1,0 +1,157 @@
+class DbHandler
+{
+  url;
+  user;
+  password;
+  1 -- 1 LoginServlet;
+  1 -- 1 StandAdminServlet;
+  1 -- 1 RegistrerStandServlet;
+  1 -- 1 StandServlet;
+  1 -- 1 ResultServlet;
+  1 -- * Stand;
+  1 -- * StandOverview;
+  1 -- * Vote;
+}
+
+class LoginServlet
+{
+  adminUser;
+  adminPass;
+  1 -- 1 LoginUtil;
+  1 -- * Stand;
+}
+
+class ResultServlet
+{
+  1 -- * Stand;
+}
+
+class StandAdminServlet
+{
+}
+
+class RegistrerStandServlet
+{
+  1 -- * Stand;
+}
+
+class StandServlet
+{
+  1 -- * Vote;
+}
+
+class AdminServlet
+{
+  1 -- 1 DbHandler;
+  1 -- 1 LoginUtil;
+  1 -- * Stand;
+}
+
+class Stand
+{
+  int id;
+  name;
+  imageUrl;
+  epostadmin;
+  pin;
+  * -- 1 StandAdminServlet;
+  * -- 1 StandServlet;
+  1 -- 1 StandOverview;
+}
+
+class LoginUtil
+{
+  1 -- 1 StandAdminServlet;
+  1 -- 1 RegistrerStandServlet;
+}
+
+class Vote
+{
+  int id;
+  userName;
+  int stand;
+  int score;
+}
+
+class JavaEmail
+{
+  Session mailSession;
+  1 -- 1 RegistrerStandServlet;
+}
+
+class StandOverview
+{
+}
+//$?[End_of_model]$?
+
+class DbHandler
+{
+  position 50 30 109 45;
+  position.association DbHandler__LoginServlet 25,90 30,0;
+  position.association DbHandler__StandAdminServlet 5,90 30,0;
+  position.association DbHandler__RegistrerStandServlet 4,90 30,0;
+  position.association DbHandler__StandServlet 110,10 0,10;
+  position.association DbHandler__ResultServlet 9,90 30,0;
+  position.association DbHandler__Stand 110,14 0,10;
+  position.association DbHandler__StandOverview 110,10 0,10;
+}
+
+class LoginServlet
+{
+  position 50 130 109 45;
+  position.association LoginServlet__LoginUtil 122,30 0,10;
+  position.association LoginServlet__Stand 122,16 0,10;
+}
+
+class ResultServlet
+{
+  position 50 230 109 45;
+  position.association ResultServlet__Stand 110,10 0,10;
+}
+
+class StandAdminServlet
+{
+  position 50 330 109 45;
+}
+
+class RegistrerStandServlet
+{
+  position 50 430 109 45;
+}
+
+class StandServlet
+{
+  position 250 30 109 45;
+}
+
+class AdminServlet
+{
+  position 250 130 109 45;
+  position.association AdminServlet__DbHandler 0,10 110,12;
+}
+
+class Stand
+{
+  position 250 230 109 45;
+}
+
+class LoginUtil
+{
+  position 250 330 109 45;
+  position.association LoginUtil__StandAdminServlet 0,10 136,3;
+}
+
+class Vote
+{
+  position 250 430 109 45;
+}
+
+class JavaEmail
+{
+  position 450 30 109 45;
+}
+
+class StandOverview
+{
+  position 450 130 109 45;
+}

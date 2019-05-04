@@ -1,0 +1,43 @@
+class VotingSystem {
+  state {
+    scanQRCode {
+      -> findStand;
+    }
+    findStand{
+    found -> findUser;
+     notFound -> Error;
+    }
+    Error{
+    }
+    findUser{
+      notFound -> newUser;
+      found -> userExists;
+    }
+    userExists{
+      loggedIn -> findVote;
+      notLoggedIn -> login;
+    }
+    newUser{
+      sendPin -> login;
+    }
+    login{
+      correctPin -> newVote;
+      wrongPin -> login;
+    }
+     findVote { 
+       found -> updateVote;
+       notFound -> newVote;
+    }
+    newVote{
+      findTotalScore -> resultPage;
+    }
+    updateVote{
+      findTotalScore -> resultPage;
+    }
+    resultPage{
+    
+    }
+}
+}
+
+//$?[End_of_model]$?

@@ -1,0 +1,3 @@
+Etter å ha generert kode til Java som vi skrev vor applikasjon i kan vi konstatere at koden er noe forskjellig. Vi skrev vor webapp med Java Servlets, og disse var litt vanskjellige å få overført til UMPLE applikasjonen. 
+De simplere klasser, som fx. Vote og Stand ligner ganske fint på dem vi skrev, men disse er generelt simple å få generert. 
+
